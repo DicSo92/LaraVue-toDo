@@ -34,13 +34,7 @@
             @endif
 
             <div id="app" class="content">
-                <p>
-                    <router-link :to="{ name: 'home'}">Go to Home</router-link> |
-                    <router-link :to="{ name: 'toDoList'}">Go to ToDoList</router-link>
-                </p>
-
-                <router-view></router-view>
-
+                <Index></Index>
             </div>
         </div>
 
