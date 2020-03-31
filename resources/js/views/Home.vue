@@ -1,8 +1,6 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center my-3">
-            <h1 class="">Home</h1>
-        </div>
+    <div class="home flex flex-col items-center pt-3">
+        <h1 class="text-3xl">Home</h1>
         <HomeComponent></HomeComponent>
     </div>
 </template>

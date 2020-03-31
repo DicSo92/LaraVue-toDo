@@ -33,7 +33,7 @@
                 </div>
             @endif
 
-            <div id="app" class="content">
+            <div id="app">
                 <Index></Index>
             </div>
         </div>

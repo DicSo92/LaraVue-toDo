@@ -1,11 +1,17 @@
 <template>
-    <div class="container">
-        <p>
-            <router-link :to="{ name: 'home'}">Page 1</router-link> |
-            <router-link :to="{ name: 'toDo'}">Page 2</router-link>
-        </p>
-
-        <router-view></router-view>
+    <div class="index flex flex-col justify-start items-center">
+        <div class="flex justify-center">
+            <p class="mx-2 link">
+                <router-link :to="{ name: 'home'}" exact-active-class="text-blue-400">Home</router-link>
+            </p>
+            |
+            <p class="mx-2 link">
+                <router-link :to="{ name: 'toDo'}" exact-active-class="text-blue-400">ToDoList</router-link>
+            </p>
+        </div>
+        <div class="w-2/3">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
@@ -13,7 +19,7 @@
     // import HomeComponent from '../components/HomeComponent.vue'
 
     export default {
-        name: 'Home',
+        name: 'Index',
         components: {
         },
         data () {
@@ -28,3 +34,10 @@
         }
     }
 </script>
+
+<style type="scss">
+    .link:hover {
+        color: indianred;
+        cursor: pointer;
+    }
+</style>

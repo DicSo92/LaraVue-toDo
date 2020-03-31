@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Index from "./Index";
+
 import Home from "./views/Home";
 import ToDo from "./views/ToDo";
 

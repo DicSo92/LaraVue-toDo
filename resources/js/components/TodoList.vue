@@ -1,10 +1,10 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center my-3">
+    <div class="tasksComponent">
+        <div class="my-3">
             <h1 class="">ToDo List</h1>
         </div>
-        <ul class="list-group">
-            <li class="list-group-item"
+        <ul class="">
+            <li class=""
                 v-for="task in tasks"
                 :key="task.id">
                 {{task.name}}
