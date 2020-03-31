@@ -1,10 +1,7 @@
 <template>
     <div class="tasksComponent">
-        <div class="my-3">
-            <h1 class="">ToDo List</h1>
-        </div>
         <ul class="">
-            <li class=""
+            <li class="mb-4 bg-gray-200"
                 v-for="task in tasks"
                 :key="task.id">
                 {{task.name}}
@@ -22,7 +19,7 @@
             }
         },
         created() {
-            axios.get('http://127.0.0.1:8000/api/tasksList')
+            axios.get('/api/tasksList')
                 .then(response => this.tasks = response.data)
                 .catch(error => console.log(error))
         },

@@ -1993,9 +1993,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'TasksComponent',
   data: function data() {
@@ -2006,7 +2003,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://127.0.0.1:8000/api/tasksList').then(function (response) {
+    axios.get('/api/tasksList').then(function (response) {
       return _this.tasks = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -2063,8 +2060,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ToDoList_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/ToDoList.vue */ "./resources/js/components/ToDoList.vue");
-//
-//
 //
 //
 //
@@ -38216,13 +38211,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "tasksComponent" }, [
-    _vm._m(0),
-    _vm._v(" "),
     _c(
       "ul",
       {},
       _vm._l(_vm.tasks, function(task) {
-        return _c("li", { key: task.id }, [
+        return _c("li", { key: task.id, staticClass: "mb-4 bg-gray-200" }, [
           _vm._v("\n            " + _vm._s(task.name) + "\n        ")
         ])
       }),
@@ -38230,16 +38223,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "my-3" }, [
-      _c("h1", {}, [_vm._v("ToDo List")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -38296,21 +38280,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
-    [_vm._m(0), _vm._v(" "), _c("ToDoList")],
+    { staticClass: "home flex flex-col items-center pt-3" },
+    [
+      _c("h1", { staticClass: "text-3xl" }, [_vm._v("ToDo List")]),
+      _vm._v(" "),
+      _c("ToDoList")
+    ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row justify-content-center my-3" }, [
-      _c("h1", {}, [_vm._v("ToDo List")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
