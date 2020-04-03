@@ -1,5 +1,5 @@
 <template>
-    <li class="mb-4 p-3 rounded bg-gray-200 flex justify-between">
+    <li class="mb-4 p-3 rounded bg-gray-200 flex justify-between transitionItem">
         <p class="m-0">
             {{task.name}}
         </p>
@@ -16,15 +16,19 @@
 <script>
     export default {
         name: "ToDoListItem",
-        props: ["task"],
+        props: ["task", "page"],
         methods: {
             deleteTask () {
-
+                axios.delete(`/api/tasksList/${this.task.id}?page=${this.page}`)
+                    .then(response => this.$bus.$emit("refreshTasks", response.data))
+                    .catch(error => console.log(error))
             }
         }
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+    .transitionItem {
+        transition: all 0.5s;
+    }
 </style>

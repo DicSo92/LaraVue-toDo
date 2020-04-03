@@ -23,10 +23,10 @@
         },
         methods: {
             addTask () {
-                axios.post('/api/tasksList', {
+                axios.post(`/api/tasksList?page=1`, {
                     name: this.newTask
                 })
-                    .then(response => this.$bus.$emit("newTask", response.data))
+                    .then(response => this.$bus.$emit("refreshTasks", response.data))
                     .catch(error => console.log(error))
             }
         }

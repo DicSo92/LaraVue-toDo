@@ -15,7 +15,7 @@ class TasksController extends Controller
     public function index()
     {
 //        $tasks = Tasks::all();
-        $tasks = Tasks::orderBy('created_at', 'DESC')->get();
+        $tasks = Tasks::orderBy('created_at', 'DESC')->paginate(8);
         return response()->json($tasks);
     }
 
@@ -31,7 +31,7 @@ class TasksController extends Controller
 
         if ($task) {
 //            $tasks = Tasks::all();
-            $tasks = Tasks::orderBy('created_at', 'DESC')->get();
+            $tasks = Tasks::orderBy('created_at', 'DESC')->paginate(8);
             return response()->json($tasks);
         }
     }
@@ -60,7 +60,8 @@ class TasksController extends Controller
     {
         $task = Tasks::findOrFail($id);
         $task->update($request->all());
-        return $task;
+
+        return response()->json($task);
     }
 
     /**
@@ -73,6 +74,10 @@ class TasksController extends Controller
     {
         $task = Tasks::findOrFail($id);
         $task->delete();
-        return $task;
+
+        if ($task) {
+            $tasks = Tasks::orderBy('created_at', 'DESC')->paginate(8);
+            return response()->json($tasks);
+        }
     }
 }
