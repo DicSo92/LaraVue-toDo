@@ -2127,9 +2127,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ToDoListItem",
   props: ["task", "page"],
+  data: function data() {
+    return {
+      editing: false,
+      edit: ''
+    };
+  },
+  created: function created() {
+    this.edit = this.task.name;
+  },
   methods: {
     deleteTask: function deleteTask() {
       var _this = this;
@@ -2139,6 +2163,27 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         return console.log(error);
       });
+    },
+    editTask: function editTask() {
+      var _this2 = this;
+
+      if (!this.editing) {
+        this.editing = true;
+        this.$nextTick(function () {
+          return _this2.$refs.inputEdit.focus();
+        });
+      } else {
+        // Confirm input and edit
+        axios.put("/api/tasksList/".concat(this.task.id, "?page=").concat(this.page), {
+          name: this.edit
+        }).then(function (response) {
+          _this2.$bus.$emit("refreshTasks", response.data);
+
+          _this2.editing = false;
+        })["catch"](function (error) {
+          return console.log(error);
+        });
+      }
     }
   }
 });
@@ -6779,7 +6824,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".transitionItem[data-v-dd55d87c] {\n  transition: all 0.5s;\n}", ""]);
+exports.push([module.i, ".transitionItem[data-v-dd55d87c] {\n  transition: all 0.5s;\n}\n.svg-icon[data-v-dd55d87c] {\n  width: 22px;\n  height: auto;\n}", ""]);
 
 // exports
 
@@ -38592,35 +38637,86 @@ var render = function() {
     "li",
     {
       staticClass:
-        "mb-4 p-3 rounded bg-gray-200 flex justify-between transitionItem"
+        "mb-4 p-3 rounded bg-gray-200 flex justify-between items-center transitionItem"
     },
     [
-      _c("p", { staticClass: "m-0" }, [
-        _vm._v("\n        " + _vm._s(_vm.task.name) + "\n    ")
-      ]),
-      _vm._v(" "),
-      _c("div", { on: { click: _vm.deleteTask } }, [
-        _c(
-          "svg",
-          {
-            staticClass: "fill-current h-6 w-6 text-red-500",
-            attrs: {
-              role: "button",
-              xmlns: "http://www.w3.org/2000/svg",
-              viewBox: "0 0 20 20"
-            }
-          },
-          [
-            _c("title", [_vm._v("Close")]),
-            _vm._v(" "),
-            _c("path", {
-              attrs: {
-                d:
-                  "M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
+      !_vm.editing
+        ? _c("p", { staticClass: "m-0" }, [
+            _vm._v("\n        " + _vm._s(_vm.task.name) + "\n    ")
+          ])
+        : _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.edit,
+                expression: "edit"
               }
-            })
-          ]
-        )
+            ],
+            ref: "inputEdit",
+            staticClass:
+              "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+            attrs: { id: "username", type: "text", placeholder: "Edit..." },
+            domProps: { value: _vm.edit },
+            on: {
+              keyup: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.editTask($event)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.edit = $event.target.value
+              }
+            }
+          }),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex" }, [
+        _c("div", { staticClass: "ml-2", on: { click: _vm.editTask } }, [
+          _c(
+            "svg",
+            {
+              staticClass: "fill-current h-6 w-6 text-dark svg-icon",
+              attrs: { role: "button", viewBox: "0 0 20 20" }
+            },
+            [
+              _c("title", [_vm._v("Edit")]),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M19.404,6.65l-5.998-5.996c-0.292-0.292-0.765-0.292-1.056,0l-2.22,2.22l-8.311,8.313l-0.003,0.001v0.003l-0.161,0.161c-0.114,0.112-0.187,0.258-0.21,0.417l-1.059,7.051c-0.035,0.233,0.044,0.47,0.21,0.639c0.143,0.14,0.333,0.219,0.528,0.219c0.038,0,0.073-0.003,0.111-0.009l7.054-1.055c0.158-0.025,0.306-0.098,0.417-0.211l8.478-8.476l2.22-2.22C19.695,7.414,19.695,6.941,19.404,6.65z M8.341,16.656l-0.989-0.99l7.258-7.258l0.989,0.99L8.341,16.656z M2.332,15.919l0.411-2.748l4.143,4.143l-2.748,0.41L2.332,15.919z M13.554,7.351L6.296,14.61l-0.849-0.848l7.259-7.258l0.423,0.424L13.554,7.351zM10.658,4.457l0.992,0.99l-7.259,7.258L3.4,11.715L10.658,4.457z M16.656,8.342l-1.517-1.517V6.823h-0.003l-0.951-0.951l-2.471-2.471l1.164-1.164l4.942,4.94L16.656,8.342z"
+                }
+              })
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "ml-1", on: { click: _vm.deleteTask } }, [
+          _c(
+            "svg",
+            {
+              staticClass: "fill-current h-6 w-6 text-red-500 svg-icon",
+              attrs: { role: "button", viewBox: "0 0 20 20" }
+            },
+            [
+              _c("title", [_vm._v("Close")]),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
+                }
+              })
+            ]
+          )
+        ])
       ])
     ]
   )

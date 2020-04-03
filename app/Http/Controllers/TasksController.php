@@ -61,7 +61,10 @@ class TasksController extends Controller
         $task = Tasks::findOrFail($id);
         $task->update($request->all());
 
-        return response()->json($task);
+        if ($task) {
+            $tasks = Tasks::orderBy('created_at', 'DESC')->paginate(8);
+            return response()->json($tasks);
+        }
     }
 
     /**
