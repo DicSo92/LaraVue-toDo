@@ -5,6 +5,10 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+let bus = new Vue
+Vue.prototype.$bus = bus
+
+
 import Index from "./Index";
 
 import Home from "./views/Home";
