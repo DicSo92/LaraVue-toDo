@@ -67,7 +67,7 @@
                         name: this.edit
                     })
                         .then(response => {
-                            this.$bus.$emit("refreshTasks", response.data)
+                            this.$bus.$emit("refreshTasks", response.data.tasks)
                             this.editing = false
                             this.$bus.$emit("showAlert", {positive: true, alerts: ["Task successfully edited"]})
                         })

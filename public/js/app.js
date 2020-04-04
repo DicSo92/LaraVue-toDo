@@ -2225,7 +2225,7 @@ __webpack_require__.r(__webpack_exports__);
         axios.put("/api/tasksList/".concat(this.task.id, "?page=").concat(this.page), {
           name: this.edit
         }).then(function (response) {
-          _this2.$bus.$emit("refreshTasks", response.data);
+          _this2.$bus.$emit("refreshTasks", response.data.tasks);
 
           _this2.editing = false;
 
@@ -2379,10 +2379,7 @@ __webpack_require__.r(__webpack_exports__);
         axios.put("/api/tasksList/".concat(this.task.id, "?page=").concat(this.$store.state.page), {
           name: this.edit
         }).then(function (response) {
-          // this.$bus.$emit("refreshTasks", response.data)
-          _this2.task = response.data.data[response.data.data.findIndex(function (task) {
-            return task.id === _this2.task.id;
-          })];
+          _this2.task = response.data.task;
           _this2.editing = false;
 
           _this2.showAlert({

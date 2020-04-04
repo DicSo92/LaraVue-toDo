@@ -70,7 +70,7 @@ class TasksController extends Controller
 
         if ($task) {
             $tasks = Tasks::orderBy('created_at', 'DESC')->paginate(8);
-            return response()->json($tasks);
+            return response()->json(array("task"=>$task, "tasks"=>$tasks));
         }
     }
 
