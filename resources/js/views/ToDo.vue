@@ -11,19 +11,19 @@
         </transition>
         <h1 class="text-3xl">ToDo List</h1>
         <AddTask></AddTask>
-<!--        <ToDoList></ToDoList>-->
+        <ToDoList></ToDoList>
     </div>
 </template>
 
 <script>
-    // import ToDoList from '../components/ToDoList'
+    import ToDoList from '../components/ToDoList'
     import AddTask from '../components/AddTask'
     import Alert from '../components/Alert'
 
     export default {
         name: 'ToDo',
         components: {
-            // ToDoList,
+            ToDoList,
             AddTask,
             Alert
         },

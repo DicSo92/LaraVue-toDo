@@ -32,7 +32,7 @@
     import ToDoListItem from '../components/ToDoListItem.vue'
 
     export default {
-        name: 'TasksComponent',
+        name: 'ToDoList',
         components: {
             ToDoListItem
         },
