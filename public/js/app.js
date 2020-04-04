@@ -2421,9 +2421,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_ToDoList_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/ToDoList.vue */ "./resources/js/components/ToDoList.vue");
-/* harmony import */ var _components_AddTask_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/AddTask.vue */ "./resources/js/components/AddTask.vue");
-/* harmony import */ var _components_Alert_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Alert.vue */ "./resources/js/components/Alert.vue");
+/* harmony import */ var _components_ToDoList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/ToDoList */ "./resources/js/components/ToDoList.vue");
+/* harmony import */ var _components_AddTask__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/AddTask */ "./resources/js/components/AddTask.vue");
+/* harmony import */ var _components_Alert__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Alert */ "./resources/js/components/Alert.vue");
 //
 //
 //
@@ -2447,9 +2447,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ToDo',
   components: {
-    ToDoList: _components_ToDoList_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    AddTask: _components_AddTask_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Alert: _components_Alert_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    ToDoList: _components_ToDoList__WEBPACK_IMPORTED_MODULE_0__["default"],
+    AddTask: _components_AddTask__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Alert: _components_Alert__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {

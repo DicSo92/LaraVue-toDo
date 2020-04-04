@@ -16,9 +16,9 @@
 </template>
 
 <script>
-    import ToDoList from '../components/ToDoList.vue'
-    import AddTask from '../components/AddTask.vue'
-    import Alert from '../components/Alert.vue'
+    import ToDoList from '../components/ToDoList'
+    import AddTask from '../components/AddTask'
+    import Alert from '../components/Alert'
 
     export default {
         name: 'ToDo',
