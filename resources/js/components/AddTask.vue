@@ -16,9 +16,11 @@
 <script>
     export default {
         name: "AddTask",
+        components: {
+        },
         data () {
             return {
-                newTask: ''
+                newTask: '',
             }
         },
         methods: {
@@ -26,9 +28,14 @@
                 axios.post(`/api/tasksList?page=1`, {
                     name: this.newTask
                 })
-                    .then(response => this.$bus.$emit("refreshTasks", response.data))
-                    .catch(error => console.log(error))
-            }
+                    .then(response => {
+                        this.$bus.$emit("refreshTasks", response.data)
+                        this.$bus.$emit("showAlert", {positive: true, alerts: ["Task successfully added"]})
+                    })
+                    .catch(error => {
+                        this.$bus.$emit("showAlert", {positive: false, alerts: error.response.data.errors.name})
+                    })
+            },
         }
     }
 </script>

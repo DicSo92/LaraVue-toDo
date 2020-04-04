@@ -27,10 +27,12 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        $task = Tasks::create($request->all());
+        $validateData = $request->validate([
+            'name' => 'required',
+        ]);
+        $task = Tasks::create($validateData);
 
         if ($task) {
-//            $tasks = Tasks::all();
             $tasks = Tasks::orderBy('created_at', 'DESC')->paginate(8);
             return response()->json($tasks);
         }
@@ -59,7 +61,12 @@ class TasksController extends Controller
     public function update(Request $request, Tasks $tasks, $id)
     {
         $task = Tasks::findOrFail($id);
-        $task->update($request->all());
+
+        $validateData = $request->validate([
+            'name' => 'required',
+        ]);
+
+        $task->update($validateData);
 
         if ($task) {
             $tasks = Tasks::orderBy('created_at', 'DESC')->paginate(8);

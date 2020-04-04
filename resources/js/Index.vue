@@ -1,5 +1,5 @@
 <template>
-    <div class="index flex flex-col justify-start items-center">
+    <div class="index flex flex-col justify-start items-center relative">
         <div class="flex justify-center">
             <p class="mx-2 link">
                 <router-link :to="{ name: 'home'}" exact-active-class="text-blue-400">Home</router-link>
@@ -16,8 +16,6 @@
 </template>
 
 <script>
-    // import HomeComponent from '../components/HomeComponent.vue'
-
     export default {
         name: 'Index',
         components: {
@@ -31,7 +29,7 @@
         },
         mounted() {
             console.log('Vue home mounted.')
-        }
+        },
     }
 </script>
 
@@ -39,5 +37,11 @@
     .link:hover {
         color: indianred;
         cursor: pointer;
+    }
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
     }
 </style>
