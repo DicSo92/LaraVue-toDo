@@ -17,6 +17,7 @@ Vue.prototype.$bus = bus
 import Index from "./Index";
 import Home from "./views/Home";
 import ToDo from "./views/ToDo";
+import Task from "./views/Task";
 
 const router = new VueRouter({
     mode: 'history',
@@ -30,6 +31,12 @@ const router = new VueRouter({
             path: '/toDo',
             name: 'toDo',
             component: ToDo,
+        },
+        {
+            path: '/task/:taskId',
+            props: true,
+            name: 'task',
+            component: Task,
         },
     ],
 });

@@ -2,7 +2,8 @@
     <div class="ToDo flex flex-col items-center pt-3">
         <transition name="fade">
             <div v-if="alerts">
-                <Alert v-for="alert in alerts.alerts"
+                <Alert v-for="(alert, index) in alerts.alerts"
+                       :key="index"
                        :message="alert"
                        :positive="alerts.positive">
                 </Alert>
