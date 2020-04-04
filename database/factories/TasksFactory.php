@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Tasks::class, function (Faker $faker) {
     return [
-        'name' => $faker -> realText($maxNbChars = rand(5, 120), $indexSize = 2)
+        'name' => $faker -> realText($maxNbChars = rand(10, 120), $indexSize = 2)
     ];
 });
