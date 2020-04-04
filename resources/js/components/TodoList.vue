@@ -16,7 +16,7 @@
                 </ToDoListItem>
             </transition-group>
         </ul>
-        <div class="flex">
+        <div class="flex mb-3">
             <button class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-1"
                     v-for="(page, index) in tasks.last_page"
                     :class="page === tasks.current_page ? 'bg-blue-500' : 'bg-blue-200'"

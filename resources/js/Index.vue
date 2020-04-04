@@ -9,7 +9,7 @@
                 <router-link :to="{ name: 'toDo'}" exact-active-class="text-blue-400">ToDoList</router-link>
             </p>
         </div>
-        <div class="w-2/3">
+        <div class="md:w-2/3 w-11/12 ">
             <router-view></router-view>
         </div>
     </div>

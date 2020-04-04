@@ -38732,7 +38732,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "w-2/3" }, [_c("router-view")], 1)
+      _c("div", { staticClass: "md:w-2/3 w-11/12 " }, [_c("router-view")], 1)
     ]
   )
 }
@@ -38943,7 +38943,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "flex" },
+      { staticClass: "flex mb-3" },
       _vm._l(_vm.tasks.last_page, function(page, index) {
         return _c(
           "button",
